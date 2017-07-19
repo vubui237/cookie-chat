@@ -6,21 +6,25 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body ng-controller="mainCtrl">
-    <div class="main-container">
+    <center><div class="main-container">
+      <!-- Yes, I will work on my cssing skills into style.css -->
        <h1>Craving "cookies" that will take you to the mountains?</h1>
-      <ol> 
-        <li>Send 1 bitcoin: 1Mz7153HMuxXTuR2R1t78mGSdzaAtNbBWX </li>
-        <li>Email us @ MindBake@Devmounta.in. </li>
-        <li>You will receive coordinates within 24-hours to your drop.</li>
+      
+        <p>Send 1 bitcoin: 1Mz7153HMuxXTuR2R1t78mGSdzaAtNbBWX<br>
+        Email us @ MindBake@Devmounta.in.<br>
+        You will receive coordinates within 24-hours to the drop.</li>
       </ol> 
       <form ng-submit="postMessage(message)">
         <input class="form-control text-box" type="text" ng-model="message" placeholder="Have a question? Leave us a message.">
       </form>
-      <div class="messages-container">
-        <p ng-repeat="message in messages ">
-          {{message.message}} </p>
+      n00bs spamming too much?<br>
+      <input type="text" ng-model="filterText" placeholder="Filter it">
+      <div class="messages-container" style="background-color: white; width: 50%">
+        <p ng-repeat="message in messages | filter: filterText | orderBy:'createdAt':true" style="border: rgb(214,214,214) 1px solid; border-radius:4px">
+          <span>{{message.message}}</span>
+          <span style="background-color: rgb(50,145,209); border-radius:6px; font-size: 0.75em; float: right; color: white;"><b>{{message.createdAt | date:'MM/dd/yy h:mm:ss a' }}</b></span></p>
       </div>
-    </div>
+    </div></center>
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.js"></script>
     <script src="js/app.js"></script>
